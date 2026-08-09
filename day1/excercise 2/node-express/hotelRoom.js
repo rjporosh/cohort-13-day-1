@@ -34,3 +34,17 @@ class HotelRoom {
         this.#available = true;
     }
 }
+
+app.post("/rooms/:id/book", (req, res) => {
+    try {
+        room.book();
+
+        res.json({
+            message: "Room booked successfully."
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: error.message
+        });
+    }
+});
