@@ -11,7 +11,7 @@ public class Customer
         Email = email;
         CreditCard = creditCard;
     }
-    public CreditCard CreditCard { get; }
+    public CreditCard CreditCard { get; set; }
     public string Name { get; }
     public string Email { get; }
 }

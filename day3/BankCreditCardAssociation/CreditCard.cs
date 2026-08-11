@@ -1,20 +1,22 @@
 public class CreditCard
 {
+    
     private decimal _balance;
 
-    public CreditCard(string cardNumber, decimal creditLimit,DateTime expirationDate,Customer customer)
+   
+    public CreditCard(string cardNumber, decimal creditLimit,DateTime expirationDate) 
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(cardNumber);
+        //todo make sure credit card 16 digit and digit only. 
+        // invalidcreditcard number exception (customException)
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(creditLimit);
+        //todo Invalid Expiration Date or CardExcpired Custom Exception
         if (expirationDate <= DateTime.Now)
             throw new ArgumentOutOfRangeException(nameof(expirationDate));
-        if (customer == null)
-            throw new ArgumentNullException(nameof(customer));
 
         CardNumber = cardNumber;
         CreditLimit = creditLimit;
         ExpirationDate = expirationDate;
-        Customer = customer;
         _balance = 0;
     }
 
@@ -23,7 +25,6 @@ public class CreditCard
     public decimal Balance => _balance;
     public DateTime ExpirationDate { get; }
 
-    public Customer Customer { get; }
 
     public void Charge(decimal amount)
     {
@@ -38,10 +39,10 @@ public class CreditCard
         _balance += amount;
     }
 
-    public void MakePayment(decimal amount)
+
+    public void BillPayment(decimal amount)
     {
-        if (IsExpired())
-            throw new InvalidOperationException("Cannot make payment on an expired card.");
+
         if (amount <= 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
 
