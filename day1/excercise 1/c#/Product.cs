@@ -32,4 +32,15 @@ public class Product
 
         _stock -= quantity;
     }
+
+    public void RecordDamage(double quantity)
+    {
+        if (quantity <= 0)
+            throw new ArgumentOutOfRangeException(nameof(quantity));
+
+        if (quantity > _stock)
+            throw new InvalidOperationException("Insufficient stock to record damage.");
+
+        _stock -= quantity;
+    }
 }
