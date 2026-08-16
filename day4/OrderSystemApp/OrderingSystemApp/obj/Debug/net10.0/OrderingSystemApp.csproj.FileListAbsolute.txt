@@ -1,0 +1,15 @@
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/bin/Debug/net10.0/OrderingSystemApp
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/bin/Debug/net10.0/OrderingSystemApp.deps.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/bin/Debug/net10.0/OrderingSystemApp.runtimeconfig.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/bin/Debug/net10.0/OrderingSystemApp.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/bin/Debug/net10.0/OrderingSystemApp.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.AssemblyInfoInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.AssemblyInfo.cs
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.csproj.CoreCompileInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.sourcelink.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/refint/OrderingSystemApp.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/OrderingSystemApp.genruntimeconfig.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day4/OrderSystemApp/OrderingSystemApp/obj/Debug/net10.0/ref/OrderingSystemApp.dll

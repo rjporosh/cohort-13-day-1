@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="EcommerceOrderManagement/EcommerceOrderManagement.csproj" />
+  <Project Path="HotelBooking/HotelBooking.csproj" />
+  <Project Path="LibraryManagement/LibraryManagement.csproj" />
+  <Project Path="PetOwnership/PetOwnership.csproj" />
+  <Project Path="SchoolManagement/SchoolManagement.csproj" />
+  <Project Path="UniversityCourseManagement/UniversityCourseManagement.csproj" />
+</Solution>

@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="BankCustomerCreditCard/BankCustomerCreditCard.csproj" />
+  <Project Path="CarLicensePlate/CarLicensePlate.csproj" />
+  <Project Path="HospitalDoctorPatient/HospitalDoctorPatient.csproj" />
+  <Project Path="HospitalMedication/HospitalMedication.csproj" />
+  <Project Path="LibraryManagement/LibraryManagement.csproj" />
+  <Project Path="RestaurantOrderManagement/RestaurantOrderManagement.csproj" />
+  <Project Path="SmartParking/SmartParking.csproj" />
+</Solution>

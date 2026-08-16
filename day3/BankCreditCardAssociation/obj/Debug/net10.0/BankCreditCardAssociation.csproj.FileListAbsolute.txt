@@ -1,0 +1,15 @@
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.GeneratedMSBuildEditorConfig.editorconfig
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.AssemblyInfoInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.AssemblyInfo.cs
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.csproj.CoreCompileInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.sourcelink.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/bin/Debug/net10.0/BankCreditCardAssociation
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/bin/Debug/net10.0/BankCreditCardAssociation.deps.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/bin/Debug/net10.0/BankCreditCardAssociation.runtimeconfig.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/bin/Debug/net10.0/BankCreditCardAssociation.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/bin/Debug/net10.0/BankCreditCardAssociation.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/refint/BankCreditCardAssociation.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/BankCreditCardAssociation.genruntimeconfig.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/obj/Debug/net10.0/ref/BankCreditCardAssociation.dll
