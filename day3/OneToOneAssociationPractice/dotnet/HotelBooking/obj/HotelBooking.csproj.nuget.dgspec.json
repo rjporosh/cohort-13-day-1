@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/HotelBooking/HotelBooking.csproj": {}
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/HotelBooking/HotelBooking.csproj": {}
   },
   "projects": {
-    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/HotelBooking/HotelBooking.csproj": {
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/HotelBooking/HotelBooking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/HotelBooking/HotelBooking.csproj",
+        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/HotelBooking/HotelBooking.csproj",
         "projectName": "HotelBooking",
-        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/HotelBooking/HotelBooking.csproj",
+        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/HotelBooking/HotelBooking.csproj",
         "packagesPath": "/Users/prince/.nuget/packages/",
-        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/HotelBooking/obj/",
+        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/HotelBooking/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prince/.nuget/NuGet/NuGet.Config"

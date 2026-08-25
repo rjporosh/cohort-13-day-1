@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qF0S+WuSmpA=",
+  "dgSpecHash": "U2HBYJOtoE0=",
   "success": true,
-  "projectFilePath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/LibraryManagement/LibraryManagement.csproj",
+  "projectFilePath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/LibraryManagement/LibraryManagement.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

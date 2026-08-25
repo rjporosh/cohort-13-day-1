@@ -1,0 +1,15 @@
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/bin/Debug/net10.0/VehicleRentalSystem
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/bin/Debug/net10.0/VehicleRentalSystem.deps.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/bin/Debug/net10.0/VehicleRentalSystem.runtimeconfig.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/bin/Debug/net10.0/VehicleRentalSystem.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/bin/Debug/net10.0/VehicleRentalSystem.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.GeneratedMSBuildEditorConfig.editorconfig
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.AssemblyInfoInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.AssemblyInfo.cs
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.csproj.CoreCompileInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.sourcelink.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/refint/VehicleRentalSystem.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/VehicleRentalSystem.genruntimeconfig.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day7/dotnet/VehicleRentalSystem/obj/Debug/net10.0/ref/VehicleRentalSystem.dll

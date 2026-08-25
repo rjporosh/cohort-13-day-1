@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/PetOwnership/PetOwnership.csproj": {}
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/PetOwnership/PetOwnership.csproj": {}
   },
   "projects": {
-    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/PetOwnership/PetOwnership.csproj": {
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/PetOwnership/PetOwnership.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/PetOwnership/PetOwnership.csproj",
+        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/PetOwnership/PetOwnership.csproj",
         "projectName": "PetOwnership",
-        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/PetOwnership/PetOwnership.csproj",
+        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/PetOwnership/PetOwnership.csproj",
         "packagesPath": "/Users/prince/.nuget/packages/",
-        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/PetOwnership/obj/",
+        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/PetOwnership/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prince/.nuget/NuGet/NuGet.Config"

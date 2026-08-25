@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/UniversityCourseManagement/UniversityCourseManagement.csproj": {}
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/UniversityCourseManagement/UniversityCourseManagement.csproj": {}
   },
   "projects": {
-    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/UniversityCourseManagement/UniversityCourseManagement.csproj": {
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/UniversityCourseManagement/UniversityCourseManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/UniversityCourseManagement/UniversityCourseManagement.csproj",
+        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/UniversityCourseManagement/UniversityCourseManagement.csproj",
         "projectName": "UniversityCourseManagement",
-        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/UniversityCourseManagement/UniversityCourseManagement.csproj",
+        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/UniversityCourseManagement/UniversityCourseManagement.csproj",
         "packagesPath": "/Users/prince/.nuget/packages/",
-        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/UniversityCourseManagement/obj/",
+        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/UniversityCourseManagement/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prince/.nuget/NuGet/NuGet.Config"

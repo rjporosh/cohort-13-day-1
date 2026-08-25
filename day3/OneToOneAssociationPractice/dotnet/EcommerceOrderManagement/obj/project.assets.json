@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/EcommerceOrderManagement/EcommerceOrderManagement.csproj",
+      "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/EcommerceOrderManagement/EcommerceOrderManagement.csproj",
       "projectName": "EcommerceOrderManagement",
-      "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/EcommerceOrderManagement/EcommerceOrderManagement.csproj",
+      "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/EcommerceOrderManagement/EcommerceOrderManagement.csproj",
       "packagesPath": "/Users/prince/.nuget/packages/",
-      "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/EcommerceOrderManagement/obj/",
+      "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/EcommerceOrderManagement/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/prince/.nuget/NuGet/NuGet.Config"

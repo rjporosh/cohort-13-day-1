@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/LibraryManagement/LibraryManagement.csproj",
+      "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/LibraryManagement/LibraryManagement.csproj",
       "projectName": "LibraryManagement",
-      "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/LibraryManagement/LibraryManagement.csproj",
+      "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/LibraryManagement/LibraryManagement.csproj",
       "packagesPath": "/Users/prince/.nuget/packages/",
-      "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/LibraryManagement/obj/",
+      "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/LibraryManagement/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/prince/.nuget/NuGet/NuGet.Config"
