@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Statement — What the Account Holder Wants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --burgundy:#6B1F2A;
+    --burgundy-deep:#48141E;
+    --burgundy-ink:#2A1216;
+    --gold:#B58A2E;
+    --gold-bright:#C9A227;
+    --champagne:#E8D8AE;
+    --parchment:#FBF7EE;
+    --paper:#FFFDF8;
+    --rule:#DfceB0;
+    --credit:#2F6B4F;
+    --debit:#8A2B2B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(181,138,46,.10), transparent 60%),
+      var(--parchment);
+    color:var(--burgundy-ink);
+    font-family:"Libre Franklin",system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 88px;}
+
+  /* ---- Masthead ---- */
+  .masthead{
+    padding:52px 0 30px;
+    border-bottom:2px solid var(--burgundy);
+    position:relative;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .brand .dot{width:7px;height:7px;background:var(--gold-bright);border-radius:50%;box-shadow:0 0 0 3px rgba(201,162,39,.22);}
+  .doc-kicker{
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--burgundy);margin-top:26px;
+  }
+  h1{
+    font-family:"Fraunces",serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(34px,5.4vw,54px);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    margin:6px 0 14px;
+    color:var(--burgundy-deep);
+  }
+  h1 em{font-style:italic;color:var(--gold);}
+  .lede{max-width:60ch;font-size:17px;color:#4a3a34;}
+  .phase-tag{
+    display:inline-block;margin-top:18px;
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--burgundy);
+    border:1px solid var(--rule);border-radius:999px;padding:5px 13px;background:var(--paper);
+  }
+  .phase-tag b{color:var(--gold);font-weight:600;}
+
+  /* ---- Section headers ---- */
+  section{padding-top:64px;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px;}
+  .sec-num{
+    font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:600;
+    color:var(--gold);letter-spacing:.1em;
+  }
+  h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(24px,3.4vw,32px);color:var(--burgundy-deep);
+    margin:0;letter-spacing:-.01em;
+  }
+  .sec-sub{color:#6a564d;margin:4px 0 30px;max-width:64ch;font-size:15.5px;}
+
+  /* ---- Primary user story ---- */
+  .primary-story{
+    position:relative;
+    background:linear-gradient(180deg,var(--burgundy) 0%,var(--burgundy-deep) 100%);
+    color:#f6ecd8;border-radius:14px;padding:34px 34px 32px;
+    box-shadow:0 22px 44px -30px rgba(72,20,30,.75);
+    overflow:hidden;
+  }
+  .primary-story::before{
+    content:"“";position:absolute;top:-26px;right:20px;
+    font-family:"Fraunces",serif;font-size:180px;color:rgba(201,162,39,.16);line-height:1;
+  }
+  .primary-story .tag{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold-bright);font-weight:600;
+  }
+  .primary-story p{
+    font-family:"Fraunces",serif;font-weight:400;font-style:italic;
+    font-size:clamp(21px,3.1vw,29px);line-height:1.34;margin:14px 0 0;position:relative;
+  }
+  .primary-story .role{color:var(--gold-bright);font-style:normal;font-weight:600;}
+
+  /* ---- Supporting stories ---- */
+  .stories{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px;}
+  .story{
+    background:var(--paper);border:1px solid var(--rule);border-radius:12px;
+    padding:20px 20px 18px;position:relative;
+  }
+  .story::before{
+    content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;
+    background:linear-gradient(var(--gold-bright),var(--burgundy));border-radius:3px;
+  }
+  .story h3{
+    margin:0 0 8px;padding-left:12px;
+    font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);
+  }
+  .story p{margin:0;padding-left:12px;font-size:15px;color:#4a3a34;}
+  .story .role{color:var(--burgundy);font-weight:600;}
+  .story .benefit{color:#7a655c;}
+
+  /* ---- Expectations strip ---- */
+  .expects{margin-top:26px;background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:6px 24px;}
+  .expects summary{
+    cursor:default;list-style:none;padding:16px 0;
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);font-weight:600;
+  }
+  .expects ul{margin:0 0 18px;padding-left:20px;columns:2;column-gap:36px;}
+  .expects li{margin:0 0 9px;font-size:14.5px;color:#4a3a34;break-inside:avoid;}
+
+  /* ---- The statement (signature piece) ---- */
+  .statement{
+    margin-top:8px;background:var(--paper);border-radius:6px;
+    box-shadow:0 30px 60px -34px rgba(72,20,30,.55);
+    border:1px solid var(--rule);overflow:hidden;
+  }
+  .guilloche{
+    height:10px;
+    background:
+      repeating-linear-gradient(90deg,var(--burgundy) 0 6px,transparent 6px 12px),
+      repeating-linear-gradient(45deg,var(--gold) 0 3px,transparent 3px 9px);
+    background-blend-mode:overlay;opacity:.9;
+  }
+  .st-head{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+    padding:26px 30px 22px;border-bottom:1.5px solid var(--burgundy);
+  }
+  .st-bank{display:flex;align-items:center;gap:14px;}
+  .st-seal{
+    width:46px;height:46px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 35% 30%,var(--gold-bright),var(--burgundy) 78%);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:"Fraunces",serif;font-weight:700;font-size:20px;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .st-bank h3{font-family:"Fraunces",serif;font-weight:600;font-size:22px;color:var(--burgundy-deep);margin:0;}
+  .st-bank span{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;}
+  .st-title{text-align:right;}
+  .st-title .lbl{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+  .st-title .val{font-family:"Fraunces",serif;font-size:17px;color:var(--burgundy);font-weight:600;}
+
+  .st-meta{display:grid;grid-template-columns:1fr 1fr;gap:2px 40px;padding:20px 30px;background:linear-gradient(180deg,rgba(181,138,46,.06),transparent);border-bottom:1px solid var(--rule);}
+  .st-field{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dotted var(--rule);}
+  .st-field .k{font-size:12.5px;color:#8a756a;letter-spacing:.02em;}
+  .st-field .v{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy-ink);font-weight:500;}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{
+    background:var(--burgundy);color:var(--champagne);
+    font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;text-align:right;padding:12px 16px;
+  }
+  thead th:first-child,thead th:nth-child(2){text-align:left;}
+  tbody td{padding:11px 16px;border-bottom:1px solid #f0e6cf;text-align:right;vertical-align:top;}
+  tbody td:first-child{text-align:left;font-family:"JetBrains Mono",monospace;font-size:12px;color:#7a655c;white-space:nowrap;}
+  tbody td:nth-child(2){text-align:left;color:var(--burgundy-ink);}
+  tbody td.num{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;}
+  tbody tr:nth-child(even){background:rgba(181,138,46,.035);}
+  tbody tr.opening td,tbody tr.closing td{background:rgba(107,31,42,.06);font-weight:600;}
+  tbody tr.opening td:nth-child(2),tbody tr.closing td:nth-child(2){color:var(--burgundy);font-weight:600;}
+  .debit{color:var(--debit);}
+  .credit{color:var(--credit);}
+  .bal{color:var(--burgundy-ink);font-weight:600;}
+  .muted{color:#c8b48f;}
+
+  .st-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:22px 30px 26px;background:linear-gradient(180deg,transparent,rgba(181,138,46,.06));}
+  .totals{display:flex;gap:26px;}
+  .tot{text-align:left;}
+  .tot .k{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .tot .v{font-family:"JetBrains Mono",monospace;font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;}
+  .tot .v.debit{color:var(--debit);}
+  .tot .v.credit{color:var(--credit);}
+  .closing-box{text-align:right;}
+  .closing-box .k{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .closing-box .v{font-family:"Fraunces",serif;font-size:26px;font-weight:700;color:var(--burgundy-deep);}
+
+  .st-note{padding:14px 30px 20px;border-top:1px dashed var(--rule);font-size:11px;color:#a08c7f;font-family:"JetBrains Mono",monospace;letter-spacing:.02em;}
+
+  .footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#a08c7f;}
+  .footer b{color:var(--gold);}
+
+  @media(max-width:680px){
+    .stories,.st-meta{grid-template-columns:1fr;}
+    .expects ul{columns:1;}
+    .st-head{flex-direction:column;}
+    .st-title{text-align:left;}
+    thead th:nth-child(3),tbody td:nth-child(3){display:none;} /* hide description on tiny screens? keep */
+  }
+  @media(max-width:520px){
+    thead th:nth-child(3),tbody td:nth-child(3){display:table-cell;}
+    table{font-size:12px;}
+    thead th,tbody td{padding:9px 9px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="brand"><span class="dot"></span>Learn with Tiemoon &nbsp;·&nbsp; OOP Foundations</div>
+    <div class="doc-kicker">Case Study · Requirements</div>
+    <h1>The Account Holder's <em>Wants</em></h1>
+  </header>
+
+  <!-- SECTION 1 -->
+  <section id="stories">
+    <div class="sec-head"><span class="sec-num">01</span><h2>What the user wants</h2></div>
+
+    <div class="primary-story">
+      <div class="tag">Primary story</div>
+      <p><span class="role">As an account holder,</span> I want to view my bank statement for a chosen range of dates, so that I can review every transaction that happened in that period.</p>
+    </div>
+
+    <div class="stories">
+      <article class="story">
+        <h3>Opening &amp; closing balance</h3>
+        <p><span class="role">As an account holder,</span> I want to see my balance at the start and end of the period, <span class="benefit">so that I understand how my money moved.</span></p>
+      </article>
+      <article class="story">
+        <h3>Line-by-line detail</h3>
+        <p><span class="role">As an account holder,</span> I want each entry to show its date, description, debit or credit, and the running balance, <span class="benefit">so that I can trace every change to my account.</span></p>
+      </article>
+      <article class="story">
+        <h3>This is mine</h3>
+        <p><span class="role">As an account holder,</span> I want my name, account number and card shown on the statement, <span class="benefit">so that I can confirm the statement belongs to me.</span></p>
+      </article>
+      <article class="story">
+        <h3>Period totals</h3>
+        <p><span class="role">As an account holder,</span> I want the total money in and out for the period, <span class="benefit">so that I can summarise my income and spending at a glance.</span></p>
+      </article>
+    </div>
+
+    <div class="expects">
+      <div class="expects" style="border:0;padding:0;">
+        <summary style="padding-top:18px;">What "done" looks like — from the user's chair</summary>
+        <ul>
+          <li>I pick a start date and an end date, and I get exactly that window.</li>
+          <li>The header carries the bank name, my name, account number and card.</li>
+          <li>Every row is dated and described in plain language.</li>
+          <li>Money out is clearly separated from money in.</li>
+          <li>A running balance follows every entry, top to bottom.</li>
+          <li>Opening balance, closing balance and totals all reconcile.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="sample">
+    <div class="sec-head"><span class="sec-num">02</span><h2>A sample statement</h2></div>
+  
+    <div class="statement">
+      <div class="guilloche"></div>
+
+      <div class="st-head">
+        <div class="st-bank">
+          <div class="st-seal">B</div>
+          <div>
+            <h3>Bengal Trust Bank Ltd.</h3>
+            <span>Dhaka · Bangladesh · Est. 1998</span>
+          </div>
+        </div>
+        <div class="st-title">
+          <div class="lbl">Account Statement</div>
+          <div class="val">01 Jul – 31 Jul 2026</div>
+        </div>
+      </div>
+
+      <div class="st-meta">
+        <div>
+          <div class="st-field"><span class="k">Account holder</span><span class="v">Rahim Uddin Ahmed</span></div>
+          <div class="st-field"><span class="k">Account number</span><span class="v">0142 5567 8890 1023</span></div>
+          <div class="st-field"><span class="k">Account type</span><span class="v">Savings — Regular</span></div>
+        </div>
+        <div>
+          <div class="st-field"><span class="k">Linked card</span><span class="v">•••• •••• •••• 4471</span></div>
+          <div class="st-field"><span class="k">Currency</span><span class="v">BDT (৳)</span></div>
+          <div class="st-field"><span class="k">Statement generated</span><span class="v">31 Jul 2026</span></div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Debit (৳)</th>
+            <th>Credit (৳)</th>
+            <th>Balance (৳)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="opening">
+            <td>01 Jul 2026</td><td>Opening Balance</td>
+            <td class="num muted">—</td><td class="num muted">—</td><td class="num bal">85,400.00</td>
+          </tr>
+          <tr>
+            <td>03 Jul 2026</td><td>Salary Credit — Softworks Ltd.</td>
+            <td class="num muted">—</td><td class="num credit">65,000.00</td><td class="num bal">150,400.00</td>
+          </tr>
+          <tr>
+            <td>05 Jul 2026</td><td>ATM Withdrawal — Dhanmondi 27</td>
+            <td class="num debit">10,000.00</td><td class="num muted">—</td><td class="num bal">140,400.00</td>
+          </tr>
+          <tr>
+            <td>09 Jul 2026</td><td>POS Purchase — Agora Superstore</td>
+            <td class="num debit">3,250.00</td><td class="num muted">—</td><td class="num bal">137,150.00</td>
+          </tr>
+          <tr>
+            <td>14 Jul 2026</td><td>Utility Bill — DESCO</td>
+            <td class="num debit">2,100.00</td><td class="num muted">—</td><td class="num bal">135,050.00</td>
+          </tr>
+          <tr>
+            <td>18 Jul 2026</td><td>Fund Transfer — to A/C ••••7781</td>
+            <td class="num debit">15,000.00</td><td class="num muted">—</td><td class="num bal">120,050.00</td>
+          </tr>
+          <tr>
+            <td>22 Jul 2026</td><td>Profit / Interest Credit</td>
+            <td class="num muted">—</td><td class="num credit">420.00</td><td class="num bal">120,470.00</td>
+          </tr>
+          <tr>
+            <td>27 Jul 2026</td><td>Online Purchase — Daraz</td>
+            <td class="num debit">4,780.00</td><td class="num muted">—</td><td class="num bal">115,690.00</td>
+          </tr>
+          <tr class="closing">
+            <td>31 Jul 2026</td><td>Card Annual Fee</td>
+            <td class="num debit">500.00</td><td class="num muted">—</td><td class="num bal">115,190.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="st-foot">
+        <div class="totals">
+          <div class="tot"><div class="k">Total debits</div><div class="v debit">৳ 35,630.00</div></div>
+          <div class="tot"><div class="k">Total credits</div><div class="v credit">৳ 65,420.00</div></div>
+        </div>
+        <div class="closing-box">
+          <div class="k">Closing balance</div>
+          <div class="v">৳ 115,190.00</div>
+        </div>
+      </div>
+
+      <div class="st-note">Bengal Trust Bank Ltd. is a fictional entity used for teaching purposes only. Figures are illustrative and reconcile: opening 85,400 + credits 65,420 − debits 35,630 = closing 115,190.</div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>Learn with <b>Tiemoon</b> · Professional OOP</span>
+    <span>Phase 01 of pre-code activities · Requirements</span>
+  </div>
+
+</div>
+</body>
+</html>

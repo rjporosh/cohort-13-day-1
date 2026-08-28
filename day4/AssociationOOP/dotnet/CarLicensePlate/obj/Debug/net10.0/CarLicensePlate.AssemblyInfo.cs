@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarLicensePlate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc8635ad5eab3c3a991514849cacceb06724696c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f34e7617226bd602b1ee8da4c925d8adb0d6005c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarLicensePlate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarLicensePlate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

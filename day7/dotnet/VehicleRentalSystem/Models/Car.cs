@@ -17,7 +17,7 @@ public class Car : Vehicle
 
     public override decimal CalculateRentalCost(int rentalDays)
     {
-        decimal totalCost = RentalPricePerDay * rentalDays;
+        decimal totalCost = base.CalculateRentalCost(rentalDays);
 
         int currentYear = DateTime.Now.Year;
         int vehicleAge = currentYear - YearOfManufacture;

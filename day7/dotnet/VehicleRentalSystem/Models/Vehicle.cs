@@ -1,6 +1,6 @@
 namespace VehicleRentalSystem.Models;
 
-public abstract class Vehicle
+public class Vehicle
 {
     public string Brand { get; set; }
     public string Model { get; set; }
@@ -19,5 +19,8 @@ public abstract class Vehicle
         RentalPricePerDay = rentalPricePerDay;
     }
 
-    public abstract decimal CalculateRentalCost(int rentalDays);
+    public virtual decimal CalculateRentalCost(int rentalDays)
+    {
+        return RentalPricePerDay * rentalDays;
+    }
 }

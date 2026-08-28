@@ -19,8 +19,7 @@ public class Truck : Vehicle
 
     public override decimal CalculateRentalCost(int rentalDays)
     {
-        decimal rentalCost =
-            RentalPricePerDay * rentalDays;
+        decimal rentalCost = base.CalculateRentalCost(rentalDays);
 
         decimal maintenanceCost =
             MaintenanceFeePerDay * rentalDays;

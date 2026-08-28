@@ -17,7 +17,7 @@ public class Bike : Vehicle
 
     public override decimal CalculateRentalCost(int rentalDays)
     {
-        decimal totalCost = RentalPricePerDay * rentalDays;
+        decimal totalCost = base.CalculateRentalCost(rentalDays);
 
         if (rentalDays > 7)
         {
