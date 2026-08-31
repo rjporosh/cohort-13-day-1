@@ -5,8 +5,8 @@ public static class Program
     public static async Task Main()
     {
         var connectionString =
-            Environment.GetEnvironmentVariable("SQL_CONNECTION")
-            ?? "Server=PRODUCT-TECH\\SQLEXPRESS;Database=BankDemo;Trusted_Connection=True;TrustServerCertificate=True;";
+        Environment.GetEnvironmentVariable("SQL_CONNECTION")
+        ?? "Server=localhost,1433;Database=BankDemo;User Id=sa;        Password=CallCenter@123;TrustServerCertificate=True;       Encrypt=False;";
 
         IChatClient client =
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
@@ -19,7 +19,7 @@ public static class Program
         Console.WriteLine("Welcome to our internal Agentic banking system. Ask what you want to know about our banking data.");
         Console.WriteLine("The agent will explore the database and answer in plain language.");
         Console.Write("So, what is your query today? > ");
-        var question = "any customer name with Rafi";//Console.ReadLine();
+        var question = Console.ReadLine();
 
         if (string.IsNullOrWhiteSpace(question))
         {
