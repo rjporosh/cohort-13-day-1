@@ -1,1 +1,6 @@
 .DS_Store
+# Secrets
+**/OPENAI_API_KEY.txt
+.env
+.env.*
+!.env.example
