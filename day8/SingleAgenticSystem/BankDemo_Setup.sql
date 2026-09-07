@@ -18,9 +18,9 @@
 -------------------------------------------------------------------------------------
 IF DB_ID('BankDemo') IS NULL
     CREATE DATABASE BankDemo;
-GO
+
 USE BankDemo;
-GO
+
 
 -------------------------------------------------------------------------------------
 -- 1) Drop in dependency order (so the script is re-runnable)
@@ -30,7 +30,7 @@ IF OBJECT_ID('dbo.Accounts','U')     IS NOT NULL DROP TABLE dbo.Accounts;
 IF OBJECT_ID('dbo.AccountTypes','U') IS NOT NULL DROP TABLE dbo.AccountTypes;
 IF OBJECT_ID('dbo.Customers','U')    IS NOT NULL DROP TABLE dbo.Customers;
 IF OBJECT_ID('dbo.Branches','U')     IS NOT NULL DROP TABLE dbo.Branches;
-GO
+
 
 -------------------------------------------------------------------------------------
 -- 2) Schema
@@ -85,7 +85,7 @@ CREATE TABLE dbo.Transactions (
     Narration     NVARCHAR(200) NULL
 );
 CREATE INDEX IX_Txn_Account ON dbo.Transactions(AccountId, TxnDate);
-GO
+
 
 -------------------------------------------------------------------------------------
 -- 3) Seed: Branches
@@ -257,7 +257,7 @@ INSERT dbo.Transactions (AccountId, TxnDate, TxnType, Amount, Narration) VALUES
 -- A/C 24 (MSA, closed - nets to zero)
 (24, DATEADD(DAY, -350,GETDATE()),'Deposit'   ,  30000.00, N'Account opening deposit'),
 (24, DATEADD(DAY,   -5,GETDATE()),'Withdrawal', -30000.00, N'Account closure - balance withdrawn');
-GO
+
 
 -------------------------------------------------------------------------------------
 -- 8) Derive balances from the ledger (single source of truth)
@@ -268,7 +268,7 @@ FROM   dbo.Accounts a
 JOIN  (SELECT AccountId, SUM(Amount) AS Bal
        FROM   dbo.Transactions
        GROUP  BY AccountId) t ON t.AccountId = a.AccountId;
-GO
+
 
 -------------------------------------------------------------------------------------
 -- 9) Sanity checks (what the agent's demo question should return)
@@ -294,4 +294,4 @@ FROM   dbo.Accounts a
 JOIN   dbo.Transactions t ON t.AccountId = a.AccountId
 GROUP  BY a.AccountNo, a.Balance
 HAVING a.Balance <> SUM(t.Amount);
-GO
+
