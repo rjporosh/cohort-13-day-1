@@ -1,0 +1,14 @@
+/Users/prince/Downloads/porosh/practice/DIPDemo/bin/Debug/net10.0/DIPDemo
+/Users/prince/Downloads/porosh/practice/DIPDemo/bin/Debug/net10.0/DIPDemo.deps.json
+/Users/prince/Downloads/porosh/practice/DIPDemo/bin/Debug/net10.0/DIPDemo.runtimeconfig.json
+/Users/prince/Downloads/porosh/practice/DIPDemo/bin/Debug/net10.0/DIPDemo.dll
+/Users/prince/Downloads/porosh/practice/DIPDemo/bin/Debug/net10.0/DIPDemo.pdb
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.AssemblyInfoInputs.cache
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.AssemblyInfo.cs
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.csproj.CoreCompileInputs.cache
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.dll
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/refint/DIPDemo.dll
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.pdb
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/DIPDemo.genruntimeconfig.cache
+/Users/prince/Downloads/porosh/practice/DIPDemo/obj/Debug/net10.0/ref/DIPDemo.dll
