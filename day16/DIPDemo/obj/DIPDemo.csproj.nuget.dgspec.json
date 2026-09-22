@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/prince/Downloads/porosh/practice/DIPDemo/DIPDemo.csproj": {}
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day16/DIPDemo/DIPDemo.csproj": {}
   },
   "projects": {
-    "/Users/prince/Downloads/porosh/practice/DIPDemo/DIPDemo.csproj": {
+    "/Users/prince/Downloads/porosh/cohort-13-practice/day16/DIPDemo/DIPDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/prince/Downloads/porosh/practice/DIPDemo/DIPDemo.csproj",
+        "projectUniqueName": "/Users/prince/Downloads/porosh/cohort-13-practice/day16/DIPDemo/DIPDemo.csproj",
         "projectName": "DIPDemo",
-        "projectPath": "/Users/prince/Downloads/porosh/practice/DIPDemo/DIPDemo.csproj",
+        "projectPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day16/DIPDemo/DIPDemo.csproj",
         "packagesPath": "/Users/prince/.nuget/packages/",
-        "outputPath": "/Users/prince/Downloads/porosh/practice/DIPDemo/obj/",
+        "outputPath": "/Users/prince/Downloads/porosh/cohort-13-practice/day16/DIPDemo/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prince/.nuget/NuGet/NuGet.Config"
