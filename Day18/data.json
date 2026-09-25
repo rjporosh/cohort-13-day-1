@@ -1,0 +1,42 @@
+{
+    "customers": {
+        "101": {
+            "name": "Md. Ikramul Islam Siddique Porosh",
+            "email": "porosh@example.com",
+            "phone": "01672896992"
+        },
+    "102": {
+        "name": "Karim Hasan",
+        "email": "karim@example.com",
+        "phone": "01822222222"
+    }
+}
+
+,
+    "orders": {
+        "1234": {
+            "order_id": "1234",
+            "customer_id": "101",
+            "product": "Laptop",
+            "price": 85000,
+        "status": "Shipped"
+    },
+
+    "1212": {
+        "order_id": "1212",
+        "customer_id": "101",
+        "product": "Smartphone",
+        "price": 45000,
+        "status": "Processing"
+    }
+},
+
+
+"support_requests": [
+    {
+        "customer_id": "101",
+        "order_id": "1001",
+        "issue": "Product arrived damaged"
+    }
+]
+}
