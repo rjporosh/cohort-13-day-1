@@ -1,0 +1,12 @@
+[
+    {
+        "customer_id": "101",
+        "order_id": "1001",
+        "issue": "Product arrived damaged"
+    },
+    {
+        "customer_id": "101",
+        "order_id": "1212",
+        "issue": "আমার order 1212 এখনো ডেলিভারি হয়নি।"
+    }
+]
