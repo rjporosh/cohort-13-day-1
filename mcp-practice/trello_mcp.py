@@ -442,7 +442,7 @@ async def main():
 
             client_metadata=OAuthClientMetadata(
 
-                client_name="Tiemoon Trello MCP Client",
+                client_name="Porosh Trello MCP Client",
 
                 redirect_uris=[
                     AnyUrl(REDIRECT_URI)
