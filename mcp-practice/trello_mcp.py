@@ -2,7 +2,7 @@ import asyncio
 import webbrowser
 from urllib.parse import parse_qs, urlparse
 
-import httpx
+import httpx2
 from pydantic import AnyUrl
 from mcp import Client
 
@@ -169,7 +169,7 @@ async def main():
     # --------------------------------------------------------
     # HTTP Client
     # --------------------------------------------------------
-    async with httpx.AsyncClient(
+    async with httpx2.AsyncClient(
         auth=oauth
     ) as http_client:
 
