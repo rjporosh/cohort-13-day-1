@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Learn MCP",
+      "description": "Build my first MCP server.",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "title": "Build an AI Agent",
+      "description": "Connect an OpenAI agent to the MCP server.",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "title": "Test",
+      "description": "Testing",
+      "status": "pending"
+    }
+  ]
+}
