@@ -282,8 +282,14 @@ def delete_task(
 # Server Entry Point
 # ============================================================
 if __name__ == "__main__":
+    # host="0.0.0.0" binds to all network interfaces.
+    # This is required on macOS to allow the browser to reach
+    # the server — macOS sometimes routes loopback traffic
+    # through a different interface than 127.0.0.1, causing
+    # "connection failed" errors in the browser.
+    # Using 0.0.0.0 works on both macOS and Windows.
     mcp.run(
         transport="streamable-http",
-        host="127.0.0.1",
+        host="0.0.0.0",
         port=8000,
     )

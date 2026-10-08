@@ -1,2 +1,3 @@
 mcp[cli]>=2.0,<3
 uv
+openai>=1.0,<4
