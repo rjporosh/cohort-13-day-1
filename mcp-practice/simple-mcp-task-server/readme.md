@@ -6,3 +6,6 @@ source mcp-env/bin/activate
  mcp-env/bin/pip install -r requirements.txt
  mcp dev server.py
 npx @modelcontextprotocol/inspector mcp-env/bin/python server.py
+
+to voice assistant
+mcp-env/bin/python server_task_porosh.py --voice

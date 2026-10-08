@@ -15,6 +15,12 @@ from mcp.server.mcpserver import MCPServer
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE_FILE = BASE_DIR / "data" / "tasks.json"
 
+# Voice mode language: "en-US" = English, "bn-BD" = Bangla
+VOICE_LANGUAGE = "en-US"
+
+# How many previous messages to remember in chat history
+MAX_HISTORY_MESSAGES = 20
+
 mcp = MCPServer(
     "Task Management Server",
     version="1.0.0",
@@ -221,6 +227,16 @@ def delete_task(
 # AI CHAT ASSISTANT — OpenAI-powered task query interface
 # ============================================================
 
+SYSTEM_PROMPT = (
+    "You are a helpful task management assistant. "
+    "You will receive a live snapshot of the user's task database "
+    "with every message. Answer concisely and clearly using only "
+    "that snapshot. If the user asks you to create, update, or "
+    "delete a task, explain that those actions must be done "
+    "through the MCP tools."
+)
+
+
 def _build_task_context() -> str:
     """
     Build a plain-text context string describing all current
@@ -283,56 +299,104 @@ def _build_task_context() -> str:
     return "\n".join(lines)
 
 
-def run_chat_assistant() -> None:
-    """
-    Launch an interactive OpenAI-powered chatbox in the terminal.
-
-    Users can ask natural-language questions like:
-      - "How many tasks do I have today?"
-      - "What tasks are completed?"
-      - "What's the status of all tasks?"
-      - "How many pending tasks are there?"
-
-    The assistant always reads the live task database before
-    answering, so answers reflect the current state.
-
-    Type 'exit' or 'quit' to leave the chat.
-    """
-
+def _get_openai_client():
+    """Create an OpenAI client, or raise a clear error."""
     try:
         from openai import OpenAI
     except ImportError:
-        print(
-            "\n[ERROR] openai package is not installed.\n"
-            "Run: pip install openai\n"
+        raise RuntimeError(
+            "openai package is not installed. Run: pip install openai"
         )
-        return
 
     api_key = os.environ.get("OPENAI_API_KEY", "")
-
     if not api_key:
-        print(
-            "\n[ERROR] OPENAI_API_KEY environment variable is not set.\n"
-            "Export it before running:\n"
-            "  export OPENAI_API_KEY='sk-...'\n"
+        raise RuntimeError(
+            "OPENAI_API_KEY environment variable is not set.\n"
+            "Export it first:  export OPENAI_API_KEY='sk-...'\n"
+            "(Windows CMD:  set OPENAI_API_KEY=sk-...)"
         )
-        return
 
-    client = OpenAI(api_key=api_key)
+    return OpenAI(api_key=api_key)
 
-    SYSTEM_PROMPT = (
-        "You are a helpful task management assistant. "
-        "The user will ask questions about their tasks. "
-        "You will receive a live snapshot of their task database "
-        "in every message. Answer concisely and clearly. "
-        "If the user asks to create, update, or delete a task, "
-        "explain that those actions must be done through the MCP tools "
-        "and guide them on what to say."
+
+def _answer_question(
+    question: str,
+    history: list[dict[str, str]] | None = None,
+) -> str:
+    """
+    Send a question + live task snapshot to OpenAI,
+    return the assistant's reply as text.
+    """
+    client = _get_openai_client()
+
+    augmented = (
+        f"{question}\n\n"
+        f"--- Current Task Database Snapshot ---\n"
+        f"{_build_task_context()}"
     )
+
+    messages: list[dict[str, str]] = [
+        {"role": "system", "content": SYSTEM_PROMPT}
+    ]
+    if history:
+        messages.extend(history)
+    messages.append({"role": "user", "content": augmented})
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=messages,
+        temperature=0.3,
+        max_tokens=512,
+    )
+
+    return response.choices[0].message.content.strip()
+
+
+# ------------------------------------------------------------
+# MCP TOOL — MCP client er UI thekeo AI ke ask kora jabe
+# ------------------------------------------------------------
+
+@mcp.tool()
+def ask_assistant(
+    question: str,
+) -> dict[str, Any]:
+    """
+    Ask the AI assistant a natural-language question about your tasks.
+    Examples:
+      - "How many tasks do I have today?"
+      - "What is the status of all tasks?"
+      - "What is task 3 about?"
+      - "How many pending tasks are left?"
+    """
+    try:
+        answer = _answer_question(question)
+        return {
+            "success": True,
+            "answer": answer,
+        }
+    except Exception as exc:
+        return {
+            "success": False,
+            "message": f"{type(exc).__name__}: {exc}",
+        }
+
+
+# ------------------------------------------------------------
+# TEXT CHAT MODE  →  python server_task_porosh.py --chat
+# ------------------------------------------------------------
+
+def run_chat_assistant() -> None:
+    """Interactive text chat with the AI task assistant in the terminal."""
+
+    try:
+        _get_openai_client()
+    except RuntimeError as exc:
+        print(f"\n[ERROR] {exc}\n")
+        return
 
     print()
     print("=" * 70)
-    print("  TASK ASSISTANT — AI Chat (powered by OpenAI)")
+    print("  TASK ASSISTANT — Text Chat (powered by OpenAI)")
     print("=" * 70)
     print("  Ask anything about your tasks in natural language.")
     print("  Examples:")
@@ -341,11 +405,11 @@ def run_chat_assistant() -> None:
     print("    • What is the status of all my tasks?")
     print("    • How many pending tasks are left?")
     print()
-    print("  Type 'exit' or 'quit' to return to the MCP server.")
+    print("  Type 'exit' or 'quit' to leave the chat.")
     print("=" * 70)
     print()
 
-    conversation_history: list[dict[str, str]] = []
+    history: list[dict[str, str]] = []
 
     while True:
 
@@ -359,53 +423,132 @@ def run_chat_assistant() -> None:
             continue
 
         if user_input.lower() in {"exit", "quit", "bye", "q"}:
-            print("\n[Chat closed. MCP server continues running.]\n")
+            print("\n[Chat closed]\n")
             break
 
-        # Inject fresh task context into every user message
-        task_context = _build_task_context()
-
-        augmented_message = (
-            f"{user_input}\n\n"
-            f"--- Current Task Database Snapshot ---\n"
-            f"{task_context}"
-        )
-
-        conversation_history.append(
-            {"role": "user", "content": augmented_message}
-        )
-
         try:
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    *conversation_history,
-                ],
-                temperature=0.3,
-                max_tokens=512,
-            )
-
-            assistant_reply = (
-                response.choices[0].message.content.strip()
-            )
-
-            # Store only the raw user message (without task dump)
-            # to keep conversation history clean
-            conversation_history[-1] = {
-                "role": "user",
-                "content": user_input,
-            }
-            conversation_history.append(
-                {"role": "assistant", "content": assistant_reply}
-            )
-
-            print(f"\nAssistant: {assistant_reply}\n")
-
+            reply = _answer_question(user_input, history)
         except Exception as exc:
             print(f"\n[AI Error] {type(exc).__name__}: {exc}\n")
-            # Remove the failed message from history
-            conversation_history.pop()
+            continue
+
+        history.append({"role": "user", "content": user_input})
+        history.append({"role": "assistant", "content": reply})
+        history[:] = history[-MAX_HISTORY_MESSAGES:]
+
+        print(f"\nAssistant: {reply}\n")
+
+
+# ------------------------------------------------------------
+# VOICE CHAT MODE  →  python server_task_porosh.py --voice
+# ------------------------------------------------------------
+
+def run_voice_chat() -> None:
+    """
+    Voice mode: microphone e question bolen, AI-r uttor
+    shonoa jabe (text-to-speech diye pora hoy).
+
+    Requirements:
+        pip install openai SpeechRecognition pyttsx3 pyaudio
+    """
+
+    # --- Check imports ---
+    try:
+        import speech_recognition as sr
+        import pyttsx3
+    except ImportError:
+        print(
+            "\n[ERROR] Voice packages are not installed.\n"
+            "Run: pip install SpeechRecognition pyttsx3 pyaudio\n"
+        )
+        return
+
+    # --- Check OpenAI ---
+    try:
+        _get_openai_client()
+    except RuntimeError as exc:
+        print(f"\n[ERROR] {exc}\n")
+        return
+
+    # --- Init speech engine ---
+    recognizer = sr.Recognizer()
+
+    try:
+        engine = pyttsx3.init()
+    except Exception as exc:
+        print(f"\n[ERROR] Text-to-speech init failed: {exc}\n")
+        return
+
+    print()
+    print("=" * 70)
+    print("  TASK ASSISTANT — VOICE MODE (powered by OpenAI)")
+    print("=" * 70)
+    print("  Microphone e question bolen, AI uttor dibe.")
+    print("  Examples:")
+    print("    • How many tasks do I have today?")
+    print("    • What tasks are completed?")
+    print("    • What is the status of all my tasks?")
+    print()
+    print("  Voice chat bondho korte bolen: 'exit' / 'quit' / 'bye'")
+    print("=" * 70)
+    print()
+
+    history: list[dict[str, str]] = []
+
+    while True:
+
+        # 1. Listen from microphone
+        try:
+            with sr.Microphone() as source:
+                print("🎤 Listening... (speak now)")
+                recognizer.adjust_for_ambient_noise(source, duration=0.5)
+                audio = recognizer.listen(
+                    source,
+                    timeout=8,
+                    phrase_time_limit=15,
+                )
+        except sr.WaitTimeoutError:
+            print("[No speech detected — try again]\n")
+            continue
+        except Exception as exc:
+            print(f"\n[ERROR] Microphone problem: {exc}\n"
+                  "Check that a mic is connected and permitted.\n")
+            return
+
+        # 2. Speech -> Text
+        try:
+            question = recognizer.recognize_google(
+                audio,
+                language=VOICE_LANGUAGE,
+            ).strip()
+        except sr.UnknownValueError:
+            print("[Could not understand — please repeat]\n")
+            continue
+        except sr.RequestError as exc:
+            print(f"[Speech service error] {exc}\n")
+            continue
+
+        print(f"You (voice): {question}\n")
+
+        if question.lower().rstrip(".!? ") in {"exit", "quit", "bye", "stop"}:
+            print("[Voice chat closed]\n")
+            break
+
+        # 3. Ask OpenAI (live task snapshot shoho)
+        try:
+            reply = _answer_question(question, history)
+        except Exception as exc:
+            print(f"[AI Error] {type(exc).__name__}: {exc}\n")
+            continue
+
+        history.append({"role": "user", "content": question})
+        history.append({"role": "assistant", "content": reply})
+        history[:] = history[-MAX_HISTORY_MESSAGES:]
+
+        # 4. Show + speak the reply
+        print(f"Assistant: {reply}\n")
+        engine.say(reply)
+        engine.runAndWait()
 
 
 # ============================================================
@@ -414,16 +557,14 @@ def run_chat_assistant() -> None:
 
 if __name__ == "__main__":
 
-    # If called with --chat flag, launch the AI chat assistant
-    # instead of the MCP server.
-    #
     # Usage:
-    #   python server_task_porosh.py --chat
-    #
-    # For MCP server mode (default):
-    #   python server_task_porosh.py
+    #   python server_task_porosh.py            → MCP server mode (default)
+    #   python server_task_porosh.py --chat     → terminal text chat
+    #   python server_task_porosh.py --voice    → 🎤 voice chat
 
-    if "--chat" in sys.argv:
+    if "--voice" in sys.argv:
+        run_voice_chat()
+    elif "--chat" in sys.argv:
         run_chat_assistant()
     else:
         mcp.run()
