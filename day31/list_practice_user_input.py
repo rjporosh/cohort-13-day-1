@@ -7,7 +7,7 @@ salary = [15000, 20000, 18000, 25000, 12000]
 new_expenditure = int(input("Enter a new expenditure amount: "))
 expenditure.append(new_expenditure)
 
-# Step 3: Take user input for salary
+# Step 3: Take user input for salaryclea
 new_salary = int(input("Enter a new salary amount: "))
 # salary.insert(2, new_salary)
 salary[2] = new_salary  # Update the salary at index 2 with the new value
