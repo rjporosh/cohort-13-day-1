@@ -1,3 +1,4 @@
+
 company = [
     {
         "id": 101,
@@ -34,12 +35,14 @@ company = [
     }
 ]
 
+
+
 # Lambda Expression Way
 
 # 1. Total Salary
 total_salary = sum(
     map(
-        lambda employee: sum(employee["salary_history"]),
+        lambda salary: sum(salary["salary_history"]),
         company
     )
 )
