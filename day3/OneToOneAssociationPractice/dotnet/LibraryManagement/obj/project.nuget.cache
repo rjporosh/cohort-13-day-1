@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "U2HBYJOtoE0=",
+  "dgSpecHash": "xUTPY2O2M5w=",
   "success": true,
   "projectFilePath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/OneToOneAssociationPractice/dotnet/LibraryManagement/LibraryManagement.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/prince/.nuget/packages/microsoft.netcore.app.ref/10.0.15/microsoft.netcore.app.ref.10.0.15.nupkg.sha512",
+    "/Users/prince/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.15/microsoft.aspnetcore.app.ref.10.0.15.nupkg.sha512",
+    "/Users/prince/.nuget/packages/microsoft.netcore.app.host.osx-arm64/10.0.15/microsoft.netcore.app.host.osx-arm64.10.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

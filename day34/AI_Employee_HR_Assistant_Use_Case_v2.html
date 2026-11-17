@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Case: AI-Powered Employee HR Assistant</title>
+<style>
+:root { --navy:#12304a; --blue:#2563eb; --green:#15803d; --ink:#1f2937; --muted:#64748b; --line:#dbe3ed; --soft:#f4f7fb; }
+* { box-sizing:border-box; }
+body { margin:0; background:#edf2f7; color:var(--ink); font:16px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif; }
+main { max-width:980px; margin:32px auto; padding:48px 56px; background:white; box-shadow:0 8px 28px rgba(15,23,42,.08); }
+h1 { font-size:2.15rem; line-height:1.2; color:var(--navy); margin:0 0 12px; }
+h2 { margin:34px 0 12px; color:var(--navy); font-size:1.45rem; border-bottom:1px solid var(--line); padding-bottom:8px; }
+h3 { color:var(--navy); margin:22px 0 8px; }
+.subtitle { color:var(--blue); font-weight:700; letter-spacing:.02em; margin-bottom:26px; }
+p { margin:10px 0 14px; }
+ul { padding-left:24px; }
+table { border-collapse:collapse; width:100%; margin:16px 0 24px; font-size:.95rem; }
+th { background:var(--navy); color:white; text-align:left; }
+th,td { padding:10px 12px; border:1px solid var(--line); vertical-align:top; }
+tr:nth-child(even) td { background:#f8fafc; }
+.card { border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin:18px 0; }
+.card h3 { margin-top:0; }
+.label { text-transform:uppercase; font-size:.76rem; font-weight:800; letter-spacing:.06em; color:var(--muted); margin:12px 0 4px; }
+.answer { background:#eaf5ec; color:#14532d; border-radius:9px; padding:14px 16px; white-space:pre-line; }
+.neutral { background:var(--soft); border-radius:9px; padding:14px 16px; }
+pre { background:#0f172a; color:#e2e8f0; padding:16px; border-radius:9px; overflow:auto; font-size:.88rem; }
+code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+.diagram { padding:10px; background:#f8fafc; border:1px solid var(--line); border-radius:12px; overflow:auto; }
+.note { border-left:4px solid var(--blue); background:#eff6ff; padding:14px 16px; margin:18px 0; }
+footer { color:var(--muted); font-size:.85rem; margin-top:36px; border-top:1px solid var(--line); padding-top:14px; }
+@media print { body {background:white;} main {margin:0; padding:24px; box-shadow:none; max-width:none;} .card, table, pre {break-inside:avoid;} h2,h3 {break-after:avoid;} }
+</style>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true,theme:'neutral',flowchart:{curve:'linear'}});
+</script>
+</head><body><main>
+<h1>Use Case: AI-Powered Employee HR Assistant</h1><div class="subtitle">Agentic AI · Function Calling · OpenAI Responses API</div><h2>1. Business use case</h2><p>An organization wants to develop an AI-powered Employee HR Assistant that allows employees to access HR information through natural language. Traditionally, employees contact HR, open an HR portal, or search internal systems to check salary, leave, attendance, manager details, holidays, payroll status, job postings, and training opportunities. The proposed assistant simplifies these interactions by understanding employee requests, selecting appropriate Python function(s), retrieving information, and generating a friendly response.</p><p>Traditionally, employees need to:</p><ul><li>Contact the HR department to check salary.</li><li>Access an HR portal to check leave balance.</li><li>Contact a manager for department information.</li><li>Search internal systems for company holidays.</li><li>Contact HR to check payroll status.</li><li>Browse internal job postings and training opportunities.</li></ul><h3>Proposed solution</h3><p>An employee can ask questions using natural language:</p><ul><li>What is my salary this month?</li><li>How many casual leaves do I have?</li><li>Who is my reporting manager?</li><li>Show me the available training courses.</li><li>Tell me about my profile, leave balance, and payroll status.</li></ul><p>The AI assistant understands the request, selects the appropriate Python function or functions, retrieves the required information, and generates a user-friendly response.</p><h2>2. Program capabilities</h2><p>The assistant exposes 10 tools. Employees do not need to know function names; they interact using ordinary language.</p><table><thead><tr><th>#</th><th>Tool</th><th>Example user request</th></tr></thead><tbody><tr><td>1</td><td>get_employee_info()</td><td>Tell me about my employee profile.</td></tr><tr><td>2</td><td>get_salary_info()</td><td>What is my monthly salary?</td></tr><tr><td>3</td><td>get_leave_balance()</td><td>How many leaves do I have?</td></tr><tr><td>4</td><td>get_attendance_info()</td><td>Show my attendance this month.</td></tr><tr><td>5</td><td>get_department_info()</td><td>Tell me about my department.</td></tr><tr><td>6</td><td>get_company_holidays()</td><td>What are the upcoming holidays?</td></tr><tr><td>7</td><td>get_manager_info()</td><td>Who is my reporting manager?</td></tr><tr><td>8</td><td>get_job_openings()</td><td>What jobs are currently available?</td></tr><tr><td>9</td><td>get_training_courses()</td><td>Which training courses are available?</td></tr><tr><td>10</td><td>get_payroll_status()</td><td>Has my salary been processed?</td></tr></tbody></table><h2>3. Example interactions</h2><section class="card"><h3>Example 1: Simple request — Salary inquiry</h3><div class="label">Employee input</div><p>“What is my salary this month?”</p><div class="label">LLM decision</div><p>Select get_salary_info(employee_id=&quot;E002&quot;).</p><div class="label">Python execution</div><pre>get_salary_info(&quot;E002&quot;)</pre><div class="label">Tool result</div><pre>{
+  &quot;employee_id&quot;: &quot;E002&quot;,
+  &quot;monthly_salary&quot;: 75000,
+  &quot;currency&quot;: &quot;BDT&quot;,
+  &quot;payment_date&quot;: &quot;2026-11-01&quot;
+}</pre><div class="label">Final LLM response</div><div class="answer">Your Salary Information
+
+Your monthly salary is BDT 75,000.
+• Monthly Salary: BDT 75,000
+• Payment Date: November 1, 2026
+
+Let me know if you need any other HR information.</div></section><section class="card"><h3>Example 2: Simple request — Leave balance</h3><div class="label">Employee input</div><p>“How many casual leaves do I have remaining?”</p><div class="label">LLM decision</div><p>Select get_leave_balance(employee_id=&quot;E002&quot;).</p><div class="label">Python execution</div><pre>get_leave_balance(&quot;E002&quot;)</pre><div class="label">Tool result</div><pre>{
+  &quot;annual_leave&quot;: 12,
+  &quot;sick_leave&quot;: 8,
+  &quot;casual_leave&quot;: 5
+}</pre><div class="label">Final LLM response</div><div class="answer">Your Leave Balance
+
+You currently have 5 casual leaves remaining.
+• Annual Leave: 12 days
+• Sick Leave: 8 days
+• Casual Leave: 5 days</div></section><section class="card"><h3>Example 3: Complex request — Multiple tools</h3><div class="label">Employee input</div><p>“Tell me about my profile, my manager, and my leave balance.”</p><div class="label">LLM decision</div><p>The LLM identifies three tools: get_employee_info(), get_manager_info(), and get_leave_balance().</p><div class="label">Python execution</div><pre>The dispatcher executes all three methods and collects their results.</pre><div class="label">Tool result</div><pre>Combined tool results for employee profile, manager information, and leave balances.</pre><div class="label">Final LLM response</div><div class="answer">Employee Summary — Jane Smith
+
+Profile
+• Designation: Software Engineer
+• Department: Engineering
+• Joining Date: March 15, 2022
+
+Reporting Manager
+• Mr. Rahman
+• Engineering Manager
+
+Leave Balance
+• Annual: 12 days
+• Sick: 8 days
+• Casual: 5 days</div></section><section class="card"><h3>Example 4: Ambiguous or unsupported request</h3><div class="label">Employee input</div><p>“Can you increase my salary by 20%?”</p><div class="label">LLM decision</div><p>The assistant recognizes that none of the 10 tools can approve or modify a salary.</p><div class="label">Python execution</div><pre>No tool is executed.</pre><div class="label">Tool result</div><pre>No matching capability exists in the tool registry.</pre><div class="label">Final LLM response</div><div class="answer">I can provide your current salary information, but I cannot approve salary changes. Please contact your HR department or manager to discuss a salary revision.</div></section><h2>4. How the program works internally</h2><p>The program combines LLM operations (probabilistic) with deterministic Python operations.</p><div class="diagram"><pre class="mermaid">flowchart TD
+    A([&quot;Employee&quot;]) --&gt; B[&quot;Enter Natural Language Request&quot;]
+
+    subgraph LLM[&quot;LLM OPERATIONS — PROBABILISTIC&quot;]
+        C[&quot;LLM Call 1: Understand Intent&quot;]
+        D{&quot;Tool Required?&quot;}
+        E[&quot;Generate Direct Answer&quot;]
+        F[&quot;Select Appropriate Tool(s)&quot;]
+        K[&quot;Analyze Tool Results&quot;]
+        L{&quot;Need More Tools?&quot;}
+        N[&quot;Final LLM Call: Generate User-Friendly Answer&quot;]
+    end
+
+    subgraph PY[&quot;PYTHON OPERATIONS — DETERMINISTIC&quot;]
+        G[&quot;Tool Registry&quot;]
+        H[&quot;Generic Dispatcher&quot;]
+        I[&quot;Execute Python Function(s)&quot;]
+        J[&quot;Collect Results&quot;]
+    end
+
+    B --&gt; C --&gt; D
+    D --&gt;|No| E --&gt; O[&quot;Return Answer&quot;]
+    D --&gt;|Yes| F --&gt; G --&gt; H --&gt; I --&gt; J
+    J --&gt; K --&gt; L
+    L --&gt;|Yes| F
+    L --&gt;|No| N --&gt; O
+
+    O --&gt; P([&quot;Employee Receives Response&quot;])</pre></div><h2>5. What makes this an Agentic AI application?</h2><p>This is more than a conventional chatbot. A conventional chatbot might rely on predefined intents and manually written routing logic, such as checking whether the request contains the word “salary” or “leave.” Our AI agent uses the LLM to interpret the request and select the relevant tool. Different phrases such as “What&#x27;s my pay?”, “How much do I earn monthly?”, “Tell me my compensation,” or “Can I see my salary details?” may all lead to the same tool without separate keyword rules.</p><div class="note"><strong>Important distinction:</strong> This is a tool-using AI agent with a bounded set of capabilities. It is not yet a fully autonomous enterprise agent.</div><h2>6. Scope and assumptions</h2><ul><li>The 10 Python methods use mock employee data.</li><li>The LLM selects tools based on natural language.</li><li>Python executes the business functions.</li><li>The LLM produces the final formatted response.</li><li>The agent may execute multiple tools for a single request.</li></ul><div class="note"><strong>Production consideration:</strong> In a real enterprise implementation, the functions would integrate with HR databases or APIs, enforce authentication and authorization, validate tool arguments, and ensure sensitive data is accessible only to authorized employees.</div><footer>Learning example: AI Employee HR Assistant · Tool Calling · Agent Architecture</footer>
+<section id="complete-python-code">
+  <h2>7. Complete Python implementation</h2>
+  <p>This is the full runnable learning example implementing the ten HR tools, their function schemas, the Python tool registry and dispatcher, and the iterative OpenAI Responses API agent loop. The LLM chooses tools and writes the final response; Python executes the registered methods.</p>
+  <div class="note"><strong>Security note:</strong> This uses mock data. For production, derive the employee ID from authenticated identity and enforce authorization at the data-access layer. This code demonstrates the core architecture, not a production-ready HR security system.</div>
+  <pre><code class="language-python">import json
+from openai import OpenAI
+
+client = OpenAI()
+MODEL = &quot;gpt-5.6&quot;
+
+# -------------------------------------------------------------------
+# Mock HR data. In a real application, these methods would query
+# authenticated HR databases or internal APIs.
+# -------------------------------------------------------------------
+
+EMPLOYEES = {
+    &quot;E001&quot;: {
+        &quot;employee_id&quot;: &quot;E001&quot;,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;designation&quot;: &quot;Senior Software Engineer&quot;,
+        &quot;department_id&quot;: &quot;D001&quot;,
+        &quot;joining_date&quot;: &quot;2021-04-12&quot;,
+        &quot;manager_id&quot;: &quot;M001&quot;,
+    },
+    &quot;E002&quot;: {
+        &quot;employee_id&quot;: &quot;E002&quot;,
+        &quot;name&quot;: &quot;Jane Smith&quot;,
+        &quot;designation&quot;: &quot;Software Engineer&quot;,
+        &quot;department_id&quot;: &quot;D001&quot;,
+        &quot;joining_date&quot;: &quot;2022-03-15&quot;,
+        &quot;manager_id&quot;: &quot;M001&quot;,
+    },
+}
+
+SALARIES = {
+    &quot;E001&quot;: {&quot;monthly_salary&quot;: 90000, &quot;currency&quot;: &quot;BDT&quot;, &quot;payment_date&quot;: &quot;2026-11-01&quot;},
+    &quot;E002&quot;: {&quot;monthly_salary&quot;: 75000, &quot;currency&quot;: &quot;BDT&quot;, &quot;payment_date&quot;: &quot;2026-11-01&quot;},
+}
+
+LEAVE_BALANCES = {
+    &quot;E001&quot;: {&quot;annual_leave&quot;: 15, &quot;sick_leave&quot;: 8, &quot;casual_leave&quot;: 4},
+    &quot;E002&quot;: {&quot;annual_leave&quot;: 12, &quot;sick_leave&quot;: 8, &quot;casual_leave&quot;: 5},
+}
+
+ATTENDANCE = {
+    &quot;E001&quot;: {&quot;month&quot;: &quot;2026-11&quot;, &quot;present_days&quot;: 18, &quot;absent_days&quot;: 0, &quot;late_days&quot;: 1},
+    &quot;E002&quot;: {&quot;month&quot;: &quot;2026-11&quot;, &quot;present_days&quot;: 17, &quot;absent_days&quot;: 1, &quot;late_days&quot;: 2},
+}
+
+DEPARTMENTS = {
+    &quot;D001&quot;: {
+        &quot;department_id&quot;: &quot;D001&quot;,
+        &quot;name&quot;: &quot;Engineering&quot;,
+        &quot;head&quot;: &quot;Mr. Rahman&quot;,
+        &quot;location&quot;: &quot;Dhaka&quot;,
+    },
+}
+
+MANAGERS = {
+    &quot;M001&quot;: {
+        &quot;manager_id&quot;: &quot;M001&quot;,
+        &quot;name&quot;: &quot;Mr. Rahman&quot;,
+        &quot;designation&quot;: &quot;Engineering Manager&quot;,
+        &quot;email&quot;: &quot;rahman@example.com&quot;,
+    },
+}
+
+COMPANY_HOLIDAYS = [
+    {&quot;date&quot;: &quot;2026-12-16&quot;, &quot;name&quot;: &quot;Victory Day&quot;},
+    {&quot;date&quot;: &quot;2026-12-25&quot;, &quot;name&quot;: &quot;Christmas Day&quot;},
+]
+
+JOB_OPENINGS = [
+    {&quot;title&quot;: &quot;Backend Engineer&quot;, &quot;department&quot;: &quot;Engineering&quot;, &quot;location&quot;: &quot;Dhaka&quot;},
+    {&quot;title&quot;: &quot;Product Designer&quot;, &quot;department&quot;: &quot;Product&quot;, &quot;location&quot;: &quot;Dhaka&quot;},
+]
+
+TRAINING_COURSES = [
+    {&quot;title&quot;: &quot;Secure Coding Fundamentals&quot;, &quot;provider&quot;: &quot;Learning &amp; Development&quot;},
+    {&quot;title&quot;: &quot;Leadership Essentials&quot;, &quot;provider&quot;: &quot;Learning &amp; Development&quot;},
+]
+
+PAYROLL_STATUS = {
+    &quot;E001&quot;: {&quot;month&quot;: &quot;2026-11&quot;, &quot;status&quot;: &quot;Processed&quot;, &quot;payment_date&quot;: &quot;2026-11-01&quot;},
+    &quot;E002&quot;: {&quot;month&quot;: &quot;2026-11&quot;, &quot;status&quot;: &quot;Processed&quot;, &quot;payment_date&quot;: &quot;2026-11-01&quot;},
+}
+
+
+# -------------------------------------------------------------------
+# 10 Python tools: deterministic business/data-access functions
+# -------------------------------------------------------------------
+
+def get_employee_info(employee_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return the employee&#x27;s basic profile.&quot;&quot;&quot;
+    employee = EMPLOYEES.get(employee_id)
+    if not employee:
+        return {&quot;status&quot;: &quot;Employee not found&quot;, &quot;employee_id&quot;: employee_id}
+    return employee
+
+
+def get_salary_info(employee_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return current salary information for an employee.&quot;&quot;&quot;
+    salary = SALARIES.get(employee_id)
+    if not salary:
+        return {&quot;status&quot;: &quot;Salary information not found&quot;, &quot;employee_id&quot;: employee_id}
+    return {&quot;employee_id&quot;: employee_id, **salary}
+
+
+def get_leave_balance(employee_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return remaining annual, sick, and casual leave balances.&quot;&quot;&quot;
+    balance = LEAVE_BALANCES.get(employee_id)
+    if not balance:
+        return {&quot;status&quot;: &quot;Leave balance not found&quot;, &quot;employee_id&quot;: employee_id}
+    return {&quot;employee_id&quot;: employee_id, **balance}
+
+
+def get_attendance_info(employee_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return attendance information for the current mock reporting month.&quot;&quot;&quot;
+    attendance = ATTENDANCE.get(employee_id)
+    if not attendance:
+        return {&quot;status&quot;: &quot;Attendance information not found&quot;, &quot;employee_id&quot;: employee_id}
+    return {&quot;employee_id&quot;: employee_id, **attendance}
+
+
+def get_department_info(department_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return information about a department.&quot;&quot;&quot;
+    department = DEPARTMENTS.get(department_id)
+    if not department:
+        return {&quot;status&quot;: &quot;Department not found&quot;, &quot;department_id&quot;: department_id}
+    return department
+
+
+def get_company_holidays() -&gt; dict:
+    &quot;&quot;&quot;Return the list of upcoming company holidays.&quot;&quot;&quot;
+    return {&quot;holidays&quot;: COMPANY_HOLIDAYS}
+
+
+def get_manager_info(employee_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return the employee&#x27;s reporting manager information.&quot;&quot;&quot;
+    employee = EMPLOYEES.get(employee_id)
+    if not employee:
+        return {&quot;status&quot;: &quot;Employee not found&quot;, &quot;employee_id&quot;: employee_id}
+
+    manager = MANAGERS.get(employee[&quot;manager_id&quot;])
+    if not manager:
+        return {&quot;status&quot;: &quot;Manager information not found&quot;, &quot;employee_id&quot;: employee_id}
+    return {&quot;employee_id&quot;: employee_id, &quot;manager&quot;: manager}
+
+
+def get_job_openings() -&gt; dict:
+    &quot;&quot;&quot;Return currently available internal job openings.&quot;&quot;&quot;
+    return {&quot;job_openings&quot;: JOB_OPENINGS}
+
+
+def get_training_courses() -&gt; dict:
+    &quot;&quot;&quot;Return available employee training courses.&quot;&quot;&quot;
+    return {&quot;training_courses&quot;: TRAINING_COURSES}
+
+
+def get_payroll_status(employee_id: str) -&gt; dict:
+    &quot;&quot;&quot;Return payroll processing status for an employee.&quot;&quot;&quot;
+    status = PAYROLL_STATUS.get(employee_id)
+    if not status:
+        return {&quot;status&quot;: &quot;Payroll information not found&quot;, &quot;employee_id&quot;: employee_id}
+    return {&quot;employee_id&quot;: employee_id, **status}
+
+
+# -------------------------------------------------------------------
+# Tool definitions provided to the LLM.
+# The LLM selects tools; it does not execute Python functions itself.
+# -------------------------------------------------------------------
+
+def employee_id_parameter():
+    return {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;employee_id&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;description&quot;: &quot;The employee&#x27;s ID, such as E002.&quot;
+            }
+        },
+        &quot;required&quot;: [&quot;employee_id&quot;],
+        &quot;additionalProperties&quot;: False,
+    }
+
+
+def department_id_parameter():
+    return {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;department_id&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;description&quot;: &quot;The department ID, such as D001.&quot;
+            }
+        },
+        &quot;required&quot;: [&quot;department_id&quot;],
+        &quot;additionalProperties&quot;: False,
+    }
+
+
+def no_parameter_schema():
+    return {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {},
+        &quot;required&quot;: [],
+        &quot;additionalProperties&quot;: False,
+    }
+
+
+available_tools = [
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_employee_info&quot;,
+        &quot;description&quot;: &quot;Get an employee&#x27;s basic profile information.&quot;,
+        &quot;parameters&quot;: employee_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_salary_info&quot;,
+        &quot;description&quot;: &quot;Get the current salary information of an employee.&quot;,
+        &quot;parameters&quot;: employee_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_leave_balance&quot;,
+        &quot;description&quot;: &quot;Get an employee&#x27;s remaining leave balances.&quot;,
+        &quot;parameters&quot;: employee_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_attendance_info&quot;,
+        &quot;description&quot;: &quot;Get an employee&#x27;s attendance information.&quot;,
+        &quot;parameters&quot;: employee_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_department_info&quot;,
+        &quot;description&quot;: &quot;Get information about a department.&quot;,
+        &quot;parameters&quot;: department_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_company_holidays&quot;,
+        &quot;description&quot;: &quot;List upcoming company holidays.&quot;,
+        &quot;parameters&quot;: no_parameter_schema(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_manager_info&quot;,
+        &quot;description&quot;: &quot;Get the reporting manager of an employee.&quot;,
+        &quot;parameters&quot;: employee_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_job_openings&quot;,
+        &quot;description&quot;: &quot;List current internal job openings.&quot;,
+        &quot;parameters&quot;: no_parameter_schema(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_training_courses&quot;,
+        &quot;description&quot;: &quot;List available employee training courses.&quot;,
+        &quot;parameters&quot;: no_parameter_schema(),
+        &quot;strict&quot;: True,
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_payroll_status&quot;,
+        &quot;description&quot;: &quot;Get an employee&#x27;s payroll processing status.&quot;,
+        &quot;parameters&quot;: employee_id_parameter(),
+        &quot;strict&quot;: True,
+    },
+]
+
+
+# -------------------------------------------------------------------
+# Pure Python tool registry and generic dispatcher.
+# Add a function here when adding a new tool.
+# -------------------------------------------------------------------
+
+tool_registry = {
+    &quot;get_employee_info&quot;: get_employee_info,
+    &quot;get_salary_info&quot;: get_salary_info,
+    &quot;get_leave_balance&quot;: get_leave_balance,
+    &quot;get_attendance_info&quot;: get_attendance_info,
+    &quot;get_department_info&quot;: get_department_info,
+    &quot;get_company_holidays&quot;: get_company_holidays,
+    &quot;get_manager_info&quot;: get_manager_info,
+    &quot;get_job_openings&quot;: get_job_openings,
+    &quot;get_training_courses&quot;: get_training_courses,
+    &quot;get_payroll_status&quot;: get_payroll_status,
+}
+
+
+def execute_tool(tool_name: str, arguments: dict) -&gt; dict:
+    &quot;&quot;&quot;Look up and execute a tool using its name and parsed arguments.&quot;&quot;&quot;
+    function = tool_registry.get(tool_name)
+
+    if function is None:
+        return {&quot;error&quot;: f&quot;Unknown tool: {tool_name}&quot;}
+
+    try:
+        return function(**arguments)
+    except TypeError as exc:
+        # Handles mismatched arguments; production code should log this.
+        return {&quot;error&quot;: f&quot;Invalid arguments for {tool_name}: {exc}&quot;}
+
+
+# -------------------------------------------------------------------
+# Agent loop: LLM selects tool -&gt; Python executes -&gt; tool result is
+# sent back to LLM. The loop continues until the LLM gives a final
+# user-facing answer.
+# -------------------------------------------------------------------
+
+def run_agent(user_request: str, employee_id: str) -&gt; str:
+    instructions = f&quot;&quot;&quot;
+You are an Employee HR Assistant.
+
+The authenticated employee ID for this session is {employee_id}.
+Use this ID for employee-specific tool calls. Do not accept a different
+employee ID from the user&#x27;s message as authorization to access another
+employee&#x27;s records.
+
+Use the available tools when the request requires HR information.
+You may call more than one tool if needed.
+Do not invent HR data. Use only the tool results.
+If the request is outside the tools&#x27; capabilities, explain that politely.
+After receiving tool results, produce a concise, helpful, user-friendly answer.
+&quot;&quot;&quot;
+
+    # LLM Call 1: understand request and choose tool(s), or answer directly.
+    response = client.responses.create(
+        model=MODEL,
+        instructions=instructions,
+        input=user_request,
+        tools=available_tools,
+    )
+
+    # Continue until the model returns a final answer with no function calls.
+    while True:
+        function_calls = [
+            item for item in response.output
+            if item.type == &quot;function_call&quot;
+        ]
+
+        if not function_calls:
+            return response.output_text
+
+        tool_outputs = []
+
+        # Pure Python: execute each function call returned by the LLM.
+        for call in function_calls:
+            arguments = json.loads(call.arguments)
+
+            # For employee-specific tools, enforce session employee ID.
+            if &quot;employee_id&quot; in arguments:
+                arguments[&quot;employee_id&quot;] = employee_id
+
+            result = execute_tool(call.name, arguments)
+
+            tool_outputs.append({
+                &quot;type&quot;: &quot;function_call_output&quot;,
+                &quot;call_id&quot;: call.call_id,
+                &quot;output&quot;: json.dumps(result),
+            })
+
+        # LLM Call: process tool results, potentially select more tools,
+        # or produce the final user-friendly response.
+        response = client.responses.create(
+            model=MODEL,
+            previous_response_id=response.id,
+            input=tool_outputs,
+            tools=available_tools,
+        )
+
+
+def main() -&gt; None:
+    # In production, employee_id must come from authenticated session
+    # identity, not from arbitrary user-entered text.
+    authenticated_employee_id = &quot;E002&quot;
+
+    user_request = (
+        &quot;Tell me about my profile, my manager, and my leave balance.&quot;
+    )
+
+    final_answer = run_agent(
+        user_request=user_request,
+        employee_id=authenticated_employee_id,
+    )
+
+    print(&quot;\nHR Assistant:&quot;)
+    print(final_answer)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+</section>
+</main></body></html>

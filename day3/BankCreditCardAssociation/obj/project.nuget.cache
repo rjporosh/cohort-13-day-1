@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "3jM8cbAImLc=",
+  "dgSpecHash": "Gkaags6g8oM=",
   "success": true,
   "projectFilePath": "/Users/prince/Downloads/porosh/cohort-13-practice/day3/BankCreditCardAssociation/BankCreditCardAssociation.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/prince/.nuget/packages/microsoft.netcore.app.ref/10.0.15/microsoft.netcore.app.ref.10.0.15.nupkg.sha512",
+    "/Users/prince/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.15/microsoft.aspnetcore.app.ref.10.0.15.nupkg.sha512",
+    "/Users/prince/.nuget/packages/microsoft.netcore.app.host.osx-arm64/10.0.15/microsoft.netcore.app.host.osx-arm64.10.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

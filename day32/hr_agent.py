@@ -141,11 +141,12 @@ def hr_career_agent(user_question, current_employee_id=None):
 
     # LLM understands the question and identifies intent
     response = ollama.chat(
-        model="qwen2.5:3b",
+        model="qwen2.5-coder:14b",
         messages=messages,
         format=intent_schema,
         options={"temperature": 0}
     )
+    print(f"LLM Response: {response.message.content}")
 
     result = json.loads(response.message.content)
 
