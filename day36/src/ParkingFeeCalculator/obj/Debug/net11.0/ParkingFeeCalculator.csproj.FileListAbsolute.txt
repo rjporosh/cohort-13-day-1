@@ -1,0 +1,13 @@
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/bin/Debug/net11.0/ParkingFeeCalculator.deps.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/bin/Debug/net11.0/ParkingFeeCalculator.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/bin/Debug/net11.0/ParkingFeeCalculator.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.AssemblyInfoInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.AssemblyInfo.cs
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.csproj.CoreCompileInputs.cache
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.sourcelink.json
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/refint/ParkingFeeCalculator.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingFeeCalculator.pdb
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ref/ParkingFeeCalculator.dll
+/Users/prince/Downloads/porosh/cohort-13-practice/day36/src/ParkingFeeCalculator/obj/Debug/net11.0/ParkingF.33203CD4.Up2Date
